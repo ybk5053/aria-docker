@@ -2,11 +2,13 @@ FROM alpine
 
 RUN apk add --no-cache aria2 tzdata
 
+WORKDIR /aria2
+ADD ./aria2.conf /aria2/aria2.conf
+
 EXPOSE 6800
 
 ENV SECRET=SomethingSecure
-ENV MAXCONN=5
 
 VOLUME /downloads
 
-CMD aria2c --dir=/downloads --enable-rpc --disable-ipv6 --rpc-allow-origin-all --rpc-listen-all --rpc-listen-port=6800 --rpc-secret=$SECRET --max-connection-per-server=$MAXCONN
+CMD aria2c --rpc-secret=$SECRET --conf-path=/aria2/aria2.conf
