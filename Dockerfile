@@ -13,4 +13,4 @@ ENV SECRET=SomethingSecure
 
 VOLUME /downloads
 
-CMD aria2c --rpc-secret=$SECRET --conf-path=/aria2/aria2.conf
+ENTRYPOINT aria2c --rpc-secret=$SECRET --conf-path=/aria2/aria2.conf
