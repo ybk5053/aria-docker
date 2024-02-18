@@ -16,3 +16,4 @@ ENV SECRET=SomethingSecure
 VOLUME /downloads
 
 RUN echo "aria2c --rpc-secret=$SECRET --conf-path=/aria2/aria2.conf" > /docker-entrypoint.d/start-aria2.sh
+RUN chmod +x /docker-entrypoint.d/start-aria2.sh
